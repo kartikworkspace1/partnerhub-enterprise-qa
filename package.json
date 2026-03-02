@@ -1,0 +1,15 @@
+{
+  "name": "partnerhub-enterprise-qa",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "playwright test",
+    "smoke": "playwright test --grep @smoke",
+    "regression": "playwright test --grep @regression",
+    "merchant": "playwright test --grep @merchant",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.42.0",
+    "dotenv": "^16.0.0"
+  }
+}

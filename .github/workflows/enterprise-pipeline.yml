@@ -1,0 +1,27 @@
+name: Enterprise QA Pipeline
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '0 2 * * *'
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    env:
+      TEST_ENV: staging
+      STAGING_URL: ${{ secrets.STAGING_URL }}
+      STAGING_USERNAME: ${{ secrets.STAGING_USERNAME }}
+      STAGING_PASSWORD: ${{ secrets.STAGING_PASSWORD }}
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npx playwright install --with-deps
+      - run: npm run smoke
