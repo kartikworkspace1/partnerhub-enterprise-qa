@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { Page, expect } from '@playwright/test';
 import { getEnvCredentials } from '../config/environments';
 
 export class LoginPage {
@@ -6,9 +6,18 @@ export class LoginPage {
 
   async login() {
     const creds = getEnvCredentials();
-    await this.page.goto('https://partnerhub.payarc.io/login');
-    await this.page.fill('#username', creds.username);
-    await this.page.fill('#password', creds.password);
-    await this.page.click('button[type="submit"]');
+
+    await this.page.goto('/login');
+
+    const email = this.page.getByTestId("loginUsername")
+    const password = this.page.getByTestId("loginPassword")
+    const loginButton = this.page.getByTestId("loginButton")
+
+    await email.fill(creds.username);
+    await password.fill(creds.password);
+
+    await expect(loginButton).toBeEnabled({ timeout: 10000 })
+
+    await loginButton.click();
   }
 }

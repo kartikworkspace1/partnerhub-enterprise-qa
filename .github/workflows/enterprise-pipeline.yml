@@ -1,5 +1,6 @@
 name: Enterprise QA Pipeline
 
+
 on:
   pull_request:
     branches: [ main ]
@@ -14,8 +15,11 @@ jobs:
     env:
       TEST_ENV: staging
       STAGING_URL: ${{ secrets.STAGING_URL }}
+      PROD_URL: ${{ secrets.PROD_URL }}
       STAGING_USERNAME: ${{ secrets.STAGING_USERNAME }}
       STAGING_PASSWORD: ${{ secrets.STAGING_PASSWORD }}
+      PROD_USERNAME: ${{ secrets.PROD_USERNAME }}
+      PROD_PASSWORD: ${{ secrets.PROD_PASSWORD }}
 
     steps:
       - uses: actions/checkout@v4
@@ -25,3 +29,4 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps
       - run: npm run smoke
+      

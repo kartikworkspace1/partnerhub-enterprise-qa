@@ -13,3 +13,5 @@ export const getEnvCredentials = () => {
     password: process.env.STAGING_PASSWORD!
   };
 };
+
+
