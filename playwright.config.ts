@@ -11,11 +11,11 @@ const environments: any = {
 
 export default defineConfig({
   timeout: 60000,
-  retries: 1,
+  retries: 2,
   reporter: [['html'], ['list']],
   use: {
     baseURL: environments[ENV].baseURL,
-    headless: true,
+    headless: false,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     trace: 'retain-on-failure'
