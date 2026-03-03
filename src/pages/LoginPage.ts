@@ -7,6 +7,7 @@ export class LoginPage {
   async login() {
     const creds = getEnvCredentials();
 
+
     await this.page.goto('/login');
 
     const email = this.page.getByTestId("loginUsername")
@@ -19,5 +20,6 @@ export class LoginPage {
     await expect(loginButton).toBeEnabled({ timeout: 10000 })
 
     await loginButton.click();
+    
   }
 }
