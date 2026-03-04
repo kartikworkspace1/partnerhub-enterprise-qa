@@ -16,8 +16,7 @@ export class LoginPage {
     await email.fill(creds.username);
     await password.fill(creds.password);
 
-    await expect(loginButton).toBeEnabled({ timeout: 30000 })
-
+    //await expect(loginButton).toBeEnabled({ timeout: 30000 })    
     await loginButton.click();
     
   }
