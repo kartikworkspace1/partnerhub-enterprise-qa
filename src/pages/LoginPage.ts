@@ -20,7 +20,8 @@ export class LoginPage {
 
     await expect(loginButton).toBeEnabled({ timeout: 10000 });
 
-  await loginButton.click();
+  // 3. Click login and wait for navigation
+    await loginButton.click();
 
 // Wait for dashboard redirect (adjust if needed)
   await this.page.waitForLoadState('networkidle');
