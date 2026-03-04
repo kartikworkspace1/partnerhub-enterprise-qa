@@ -7,9 +7,7 @@ export class LoginPage {
   async login() {
     const creds = getEnvCredentials();
 
-
-    await this.page.goto('/login');
-
+    await this.page.goto('https://partnerhub-staging.payarc.com/login');
     const email = this.page.getByTestId("loginUsername")
     const password = this.page.getByTestId("loginPassword")
     const loginButton = this.page.getByTestId("loginButton")
