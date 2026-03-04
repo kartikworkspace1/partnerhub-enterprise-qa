@@ -12,17 +12,18 @@ export class LoginPage {
     
     const email = this.page.getByTestId("loginUsername");
     const password = this.page.getByTestId("loginPassword");
-    const loginButton = this.page.getByTestId("loginButton");
+    const loginButton = this.page.locator('button[type="submit"]');
 
     // 2. Fill fields and ensure the UI registers the keystrokes
     await email.fill(creds.username);
     await password.fill(creds.password);
 
-     await this.page.getByTestId('loginButton').click();
-    // 3. Explicitly wait for the button to be enabled before clicking
-    // This solves the "element is not enabled" error in your log
-    //await expect(loginButton).toBeEnabled({ timeout: 50000 });
+    await expect(loginButton).toBeEnabled({ timeout: 10000 });
 
-    //await loginButton.click();
+  await loginButton.click();
+
+// Wait for dashboard redirect (adjust if needed)
+  await this.page.waitForLoadState('networkidle');
+
   }
 }
