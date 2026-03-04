@@ -1,2 +1,4 @@
 # local environment variables
 .env
+playwright-report/
+test-results/
