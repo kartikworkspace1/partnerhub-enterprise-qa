@@ -11,7 +11,7 @@ on:
 
 jobs:
   smoke:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     env:
       TEST_ENV: staging
       STAGING_URL: ${{ secrets.STAGING_URL }}
