@@ -18,10 +18,11 @@ export class LoginPage {
     await email.fill(creds.username);
     await password.fill(creds.password);
 
+     await this.page.getByTestId('loginButton').click();
     // 3. Explicitly wait for the button to be enabled before clicking
     // This solves the "element is not enabled" error in your log
-    await expect(loginButton).toBeEnabled({ timeout: 50000 });
+    //await expect(loginButton).toBeEnabled({ timeout: 50000 });
 
-    await loginButton.click();
+    //await loginButton.click();
   }
 }
