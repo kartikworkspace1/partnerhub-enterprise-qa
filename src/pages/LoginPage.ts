@@ -18,13 +18,20 @@ export class LoginPage {
     await email.fill(creds.username);
     await password.fill(creds.password);
 
-    await expect(loginButton).toBeEnabled({ timeout: 10000 });
+   const waitForLoginRequest = this.page.waitForRequest(req =>
+      req.url().includes('/v1/agent-hub/login') && req.method() === 'POST'
+    );
 
-  // 3. Click login and wait for navigation
-    await loginButton.click();
+    const waitForLoginResponse = this.page.waitForResponse(res =>
+      res.url().includes('/v1/agent-hub/login') && res.status() === 200
+    );
 
-// Wait for dashboard redirect (adjust if needed)
-  await this.page.waitForLoadState('networkidle');
+    await this.page.getByTestId('loginButton').click();
 
+    // Wait for both to resolve
+    const [request, response] = await Promise.all([
+      waitForLoginRequest,
+      waitForLoginResponse,
+    ]);
   }
 }
