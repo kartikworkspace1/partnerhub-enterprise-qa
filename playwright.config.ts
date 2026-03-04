@@ -15,7 +15,7 @@ export default defineConfig({
   reporter: [['html'], ['list']],
   use: {
     baseURL: environments[ENV].baseURL,
-    headless: false,
+    headless: true,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     trace: 'retain-on-failure'
