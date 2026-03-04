@@ -7,11 +7,7 @@ export class LoginPage {
   async login() {
     const creds = getEnvCredentials();
 
-    // 1. Check if credentials actually exist (common CI failure)
-    if (!creds.username || !creds.password) {
-      throw new Error("Credentials not found! Check your GitHub Action Secrets.");
-    }
-
+  
     await this.page.goto('https://partnerhub.payarc.io/login');
     
     const email = this.page.getByTestId("loginUsername");
