@@ -14,6 +14,9 @@ export class LoginPage {
     const password = this.page.getByTestId("loginPassword");
     const loginButton = this.page.locator('button[type="submit"]');
 
+    console.log("USERNAME:", creds.username);
+    console.log("PASSWORD LENGTH:", creds.password?.length);
+
     // 2. Fill fields and ensure the UI registers the keystrokes
     await email.fill(creds.username);
     await password.fill(creds.password);
