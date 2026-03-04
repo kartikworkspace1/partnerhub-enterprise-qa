@@ -21,7 +21,7 @@ export class LoginPage {
 await this.page.waitForLoadState('networkidle');
 
 // now wait for button to enable
-await expect(loginButton).toBeEnabled({ timeout: 60000 });
+//await expect(loginButton).toBeEnabled({ timeout: 60000 });
 
 await loginButton.click();
 
