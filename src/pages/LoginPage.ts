@@ -8,7 +8,7 @@ export class LoginPage {
     const creds = getEnvCredentials();
 
     // 1. Navigate to the login page
-    await this.page.goto('https://partnerhub.payarc.io/login');
+    await this.page.goto('/login');
     
     const email = this.page.getByTestId("loginUsername");
     const password = this.page.getByTestId("loginPassword");
